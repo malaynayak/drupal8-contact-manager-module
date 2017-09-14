@@ -1,0 +1,5 @@
+name: Contact Manager
+type: module
+description: Manage you contacts
+core: 8.x
+package: Custom

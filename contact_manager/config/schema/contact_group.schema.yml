@@ -1,0 +1,12 @@
+contact_manager.contact_group.*:
+  type: config_entity
+  label: 'Contact group config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    uuid:
+      type: string
