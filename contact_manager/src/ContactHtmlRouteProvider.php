@@ -40,11 +40,11 @@ class ContactHtmlRouteProvider extends AdminHtmlRouteProvider {
    */
   protected function getSettingsFormRoute(EntityTypeInterface $entity_type) {
     if (!$entity_type->getBundleEntityType()) {
-      $route = new Route("/admin/structure/{$entity_type->id()}/settings");
+      $route = new Route("/admin/config/{$entity_type->id()}/settings");
       $route
         ->setDefaults([
           '_form' => 'Drupal\contact_manager\Form\ContactSettingsForm',
-          '_title' => "{$entity_type->getLabel()} settings",
+          '_title' => "{$entity_type->getLabel()} Settings",
         ])
         ->setRequirement('_permission', $entity_type->getAdminPermission())
         ->setOption('_admin_route', TRUE);

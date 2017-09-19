@@ -1,0 +1,15 @@
+entity.contact.collection:
+  path: '/admin/content/contact'
+  defaults:
+    _entity_list: 'contact'
+    _title: 'Contacts'
+  requirements:
+    _permission: 'administer contact entities'
+
+entity.contact_group.collection:
+  path: '/admin/content/contact_group'
+  defaults:
+    _entity_list: 'contact_group'
+    _title: 'Contact Groups'
+  requirements:
+    _permission: 'administer contact entities'

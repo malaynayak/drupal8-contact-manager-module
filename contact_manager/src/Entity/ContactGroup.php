@@ -30,11 +30,11 @@ use Drupal\Core\Config\Entity\ConfigEntityBase;
  *     "uuid" = "uuid"
  *   },
  *   links = {
- *     "canonical" = "/admin/structure/contact_group/{contact_group}",
- *     "add-form" = "/admin/structure/contact_group/add",
- *     "edit-form" = "/admin/structure/contact_group/{contact_group}/edit",
- *     "delete-form" = "/admin/structure/contact_group/{contact_group}/delete",
- *     "collection" = "/admin/structure/contact_group"
+ *     "canonical" = "/admin/content/contact_group/{contact_group}",
+ *     "add-form" = "/admin/content/contact_group/add",
+ *     "edit-form" = "/admin/content/contact_group/{contact_group}/edit",
+ *     "delete-form" = "/admin/content/contact_group/{contact_group}/delete",
+ *     "collection" = "/admin/content/contact_group"
  *   }
  * )
  */

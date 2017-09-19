@@ -1,16 +1,6 @@
-
-# Contact group menu items definition
-entity.contact_group.collection:
-  title: 'Contact group'
-  route_name: entity.contact_group.collection
-  description: 'List Contact group (bundles)'
-  parent: system.admin_structure
-  weight: 99
-
-
 # Contact menu items definition
 contact.admin.structure.settings:
-  title: Contact settings
-  description: 'Configure Contact entities'
+  title: Contact Entity - Settings
+  description: 'Configure Contact Entities'
   route_name: contact.settings
   parent: system.admin_structure

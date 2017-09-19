@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.contact.field_phone_number
+  module:
+    - contact_manager
+    - telephone
+id: contact.contact.field_phone_number
+field_name: field_phone_number
+entity_type: contact
+bundle: contact
+label: 'Phone Number'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

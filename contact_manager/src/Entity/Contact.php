@@ -154,16 +154,6 @@ class Contact extends ContentEntityBase implements ContactInterface {
       ->setDescription(t('The contact group'))
       ->setSetting('target_type', 'contact_group')
       ->setSetting('handler', 'default')
-      ->setDisplayOptions('view', [
-        'label' => 'hidden',
-        'type' => 'author',
-        'weight' => 0,
-      ])
-      ->setDefaultValue('')
-      ->setDisplayOptions('form', [
-        'type' => 'options_select',
-        'weight' => -6
-      ])
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
 
@@ -172,63 +162,15 @@ class Contact extends ContentEntityBase implements ContactInterface {
       ->setDescription(t('Enter contact name here.'))
       ->setRevisionable(TRUE)
       ->setRequired(TRUE)
-      ->setSettings([
-        'max_length' => 50,
-        'text_processing' => 0,
-      ])
-      ->setDefaultValue('')
-      ->setDisplayOptions('view', [
-        'label' => 'above',
-        'type' => 'string',
-        'weight' => -5,
-      ])
-      ->setDisplayOptions('form', [
-        'type' => 'string_textfield',
-        'weight' => -5,
-      ])
       ->setDisplayConfigurable('form', TRUE)
-      ->setDisplayConfigurable('view', TRUE);
-
-    $fields['phone_number'] = BaseFieldDefinition::create('integer')
-      ->setLabel(t('Phone Number'))
-      ->setDescription(t('Enter phone number here.'))
-      ->setRevisionable(TRUE)
-      ->setRequired(TRUE)
-      ->setSettings([
-        'max_length' => 12,
-        'min_length' => 10,
-      ])
-      ->setDefaultValue('')
-      ->setDisplayOptions('view', [
-        'label' => 'above',
-        'type' => 'string',
-        'weight' => -4,
-      ])
-      ->setDisplayOptions('form', [
-        'type' => 'number',
-        'weight' => -4,
-      ])
-      ->setDisplayConfigurable('form', TRUE)
+      ->setPropertyConstraints('value', ['Length' => ['max' => 50]])
       ->setDisplayConfigurable('view', TRUE);
 
     $fields['email'] = BaseFieldDefinition::create('email')
       ->setLabel(t('Email Id'))
       ->setDescription(t('Enter email address here.'))
       ->setRevisionable(TRUE)
-      ->setSettings([
-        'max_length' => 50,
-        'text_processing' => 0,
-      ])
-      ->setDefaultValue('')
-      ->setDisplayOptions('view', [
-        'label' => 'above',
-        'type' => 'string',
-        'weight' => -3,
-      ])
-      ->setDisplayOptions('form', [
-        'type' => 'string_textfield',
-        'weight' => -3,
-      ])
+      ->setPropertyConstraints('value', ['Length' => ['max' => 50]])
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
 
@@ -236,20 +178,7 @@ class Contact extends ContentEntityBase implements ContactInterface {
       ->setLabel(t('Address'))
       ->setDescription(t('Enter address here.'))
       ->setRevisionable(TRUE)
-      ->setSettings([
-        'max_length' => 256,
-        'text_processing' => 0,
-      ])
-      ->setDefaultValue('')
-      ->setDisplayOptions('view', [
-        'label' => 'above',
-        'type' => 'string',
-        'weight' => -2,
-      ])
-      ->setDisplayOptions('form', [
-        'type' => 'string_textfield',
-        'weight' => -2,
-      ])
+      ->setPropertyConstraints('value', ['Length' => ['max' => 200]])
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
 

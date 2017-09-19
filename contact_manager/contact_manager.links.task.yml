@@ -4,6 +4,13 @@ entity.contact.collection:
   description: 'List Contact entities'
   base_route: system.admin_content
 
+# Contact group menu items definition
+entity.contact_group.collection:
+  title: 'Contact Groups'
+  route_name: entity.contact_group.collection
+  description: 'Contact Groups'
+  base_route: system.admin_content
+
 # Contact routing definition
 contact.settings_tab:
   route_name: contact.settings

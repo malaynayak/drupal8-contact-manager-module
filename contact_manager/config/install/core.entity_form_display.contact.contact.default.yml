@@ -3,10 +3,12 @@ status: true
 dependencies:
   config:
     - field.field.contact.contact.field_contact_photo
+    - field.field.contact.contact.field_phone_number
     - image.style.thumbnail
   module:
     - contact_manager
     - image
+    - telephone
 id: contact.contact.default
 targetEntityType: contact
 bundle: contact
@@ -14,7 +16,7 @@ mode: default
 content:
   address:
     type: string_textfield
-    weight: -2
+    weight: 4
     region: content
     settings:
       placeholder: ''
@@ -22,39 +24,40 @@ content:
     third_party_settings: {  }
   contact_group_id:
     type: options_select
-    weight: -5
+    weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
   email:
     type: email_default
-    weight: -2
+    weight: 3
     region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
   field_contact_photo:
-    weight: 6
+    weight: 5
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
     region: content
+  field_phone_number:
+    weight: 2
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: telephone_default
+    region: content
   name:
     type: string_textfield
-    weight: -4
+    weight: 1
     region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  phone_number:
-    type: number
-    weight: -3
-    region: content
-    settings:
-      placeholder: ''
-    third_party_settings: {  }
-hidden: {  }
+hidden:
+  langcode: true

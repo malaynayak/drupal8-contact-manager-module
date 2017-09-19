@@ -1,6 +1,6 @@
 entity.contact_group.add_form:
   route_name: entity.contact_group.add_form
-  title: 'Add Contact group'
+  title: 'Add Contact Group'
   appears_on:
     - entity.contact_group.collection
 
