@@ -33,6 +33,25 @@ interface ContactInterface extends  ContentEntityInterface, EntityChangedInterfa
   public function setName($name);
 
   /**
+   * Gets the Contact Primary Phone Number.
+   *
+   * @return string
+   *   Primary Phone Number of the Contact.
+   */
+  public function getPhoneNumber();
+
+  /**
+   * Sets the Contact primary phone number.
+   *
+   * @param string $phone_number
+   *   The Contact primary phone number.
+   *
+   * @return \Drupal\contact_manager\Entity\ContactInterface
+   *   The called Contact entity.
+   */
+  public function setPhoneNumber($phone_number);
+
+  /**
    * Gets the Contact email.
    *
    * @return string

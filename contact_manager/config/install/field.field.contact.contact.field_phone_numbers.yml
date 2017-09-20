@@ -2,17 +2,17 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.contact.field_phone_number
+    - field.storage.contact.field_phone_numbers
   module:
     - contact_manager
     - telephone
-id: contact.contact.field_phone_number
-field_name: field_phone_number
+id: contact.contact.field_phone_numbers
+field_name: field_phone_numbers
 entity_type: contact
 bundle: contact
-label: 'Phone Number'
-description: ''
-required: true
+label: 'Secondary Phone Number(s)'
+description: 'Add secondary phone numbers'
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''

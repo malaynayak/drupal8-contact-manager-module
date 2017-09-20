@@ -4,8 +4,8 @@ dependencies:
   module:
     - contact_manager
     - telephone
-id: contact.field_phone_number
-field_name: field_phone_number
+id: contact.field_phone_numbers
+field_name: field_phone_numbers
 entity_type: contact
 type: telephone
 settings: {  }

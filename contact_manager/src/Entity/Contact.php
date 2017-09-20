@@ -86,6 +86,21 @@ class Contact extends ContentEntityBase implements ContactInterface {
   /**
    * {@inheritdoc}
    */
+  public function getPhoneNumber() {
+    return $this->get('phone_number')->value;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setPhoneNumber($phone_number) {
+    $this->set('phone_number', $name);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getEmail() {
     return $this->get('email')->value;
   }
@@ -195,6 +210,17 @@ class Contact extends ContentEntityBase implements ContactInterface {
       ->setDisplayOptions('view', ['label' => 'inline','type' => 'string'])
       ->setDisplayOptions('form', ['type' => 'string_textfield'])
       ->setPropertyConstraints('value', ['Length' => ['max' => 50]])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+      
+    $fields['phone_number'] = BaseFieldDefinition::create('telephone')
+      ->setLabel(t('Primary Phone Number'))
+      ->setDescription(t('Enter primary phone number here.'))
+      ->setRevisionable(TRUE)
+      ->setRequired(TRUE)
+      ->setDefaultValue('')
+      ->setDisplayOptions('view', ['label' => 'inline','type' => 'telephone_link'])
+      ->setDisplayOptions('form', ['type' => 'telephone_default'])
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
 

@@ -3,7 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.contact.contact.field_contact_photo
-    - field.field.contact.contact.field_phone_number
+    - field.field.contact.contact.field_phone_numbers
     - image.style.medium
   module:
     - contact_manager
@@ -16,7 +16,7 @@ mode: default
 content:
   address:
     type: string
-    weight: 4
+    weight: 5
     region: content
     label: inline
     settings:
@@ -32,7 +32,7 @@ content:
     third_party_settings: {  }
   email:
     type: basic_string
-    weight: 3
+    weight: 4
     region: content
     label: inline
     settings: {  }
@@ -46,14 +46,14 @@ content:
       image_style: medium
       image_link: file
     third_party_settings: {  }
-  field_phone_number:
-    type: telephone_link
-    weight: 5
-    region: content
-    label: inline
+  field_phone_numbers:
+    weight: 6
+    label: above
     settings:
       title: ''
     third_party_settings: {  }
+    type: telephone_link
+    region: content
   name:
     label: inline
     type: string
@@ -62,5 +62,13 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 1
+  phone_number:
+    label: inline
+    type: telephone_link
+    region: content
+    settings:
+      title: ''
+    third_party_settings: {  }
+    weight: 3
 hidden:
   langcode: true
