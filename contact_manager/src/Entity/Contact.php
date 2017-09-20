@@ -8,6 +8,10 @@ use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityChangedTrait;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\user\UserInterface;
+use ContactGroupInterface;
+use Drupal\file\Entity\File;
+use Drupal\Core\Url;
+use Drupal;
 
 /**
  * Defines the Contact entity.
@@ -126,6 +130,58 @@ class Contact extends ContentEntityBase implements ContactInterface {
   public function setAddress($address) {
     $this->set('address', $address);
     return $this;
+  }
+
+  /**
+   * Gets contact photo
+   *
+   * @param string $style
+   *   A valid image style e.g large, thumbnail
+   *
+   * @return string
+   *   The url of the image
+   */
+  public function getContactPhoto($style = null) {
+    $field_contact_photo_fid = $this->get('field_contact_photo')->target_id;
+    if(!empty($field_contact_photo_fid)){
+      $file_uri = File::load($field_contact_photo_fid)->getFileUri();
+      if(empty($style)){
+        return file_create_url($file_uri);
+      } else {
+        $image_style = Drupal::entityTypeManager()->getStorage('image_style')->load($style);
+        if(!empty($image_style)){
+          return $image_style->buildUrl($file_uri);
+        } else {
+          return file_create_url($file_uri);
+        }
+      }
+    }
+    return null;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getContactGroup() {
+    return $this->get('contact_group_id')->entity;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setContactGroup(ContactGroupInterface $contact_group) {
+    $this->set('contact_group_id', $contact_group->id());
+    return $this;
+  }
+
+  /**
+   * Get contact group of the contact
+   *
+   * @return string
+   *   contact group name of the contact
+   */
+  public function getContactGroupName() {
+    return $this->getContactGroup()->label();
   }
 
   /**

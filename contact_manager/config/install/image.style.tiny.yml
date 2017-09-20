@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: tiny
+label: Tiny(50×50)
+effects:
+  cc57e118-2e12-48c6-9266-b49d6743b5c7:
+    uuid: cc57e118-2e12-48c6-9266-b49d6743b5c7
+    id: image_scale
+    weight: 1
+    data:
+      width: 50
+      height: 50
+      upscale: false

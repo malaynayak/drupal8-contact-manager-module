@@ -5,6 +5,7 @@ namespace Drupal\contact_manager\Entity;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityChangedInterface;
 use Drupal\user\EntityOwnerInterface;
+use ContactGroupInterface;
 
 /**
  * Provides an interface for defining Contact entities.
@@ -88,6 +89,25 @@ interface ContactInterface extends  ContentEntityInterface, EntityChangedInterfa
    *   The called Contact entity.
    */
   public function setAddress($address);
+
+  /**
+   * Gets the Contact group.
+   *
+   * @return \Drupal\contact_manager\Entity\ContactGroupInterface
+   *   Contact group entity.
+   */
+  public function getContactGroup();
+
+  /**
+   * Sets the Contact address.
+   *
+   * @param \Drupal\contact_manager\Entity\ContactGroupInterface $contact_group
+   *   The Contact group.
+   *
+   * @return \Drupal\contact_manager\Entity\ContactInterface
+   *   The called Contact entity.
+   */
+  public function setContactGroup(ContactGroupInterface $contact_group);
 
   /**
    * Gets the Contact creation timestamp.
