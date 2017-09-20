@@ -86,6 +86,36 @@ class Contact extends ContentEntityBase implements ContactInterface {
   /**
    * {@inheritdoc}
    */
+  public function getEmail() {
+    return $this->get('email')->value;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setEmail($email) {
+    $this->set('email', $email);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getAddress() {
+    return $this->get('address')->value;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setAddress($address) {
+    $this->set('address', $address);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getCreatedTime() {
     return $this->get('created')->value;
   }
@@ -150,8 +180,8 @@ class Contact extends ContentEntityBase implements ContactInterface {
     $fields = parent::baseFieldDefinitions($entity_type);
 
     $fields['contact_group_id'] = BaseFieldDefinition::create('entity_reference')
-      ->setLabel(t('Contact Group'))
-      ->setDescription(t('The contact group'))
+      ->setLabel(t('Contact Group.'))
+      ->setDescription(t('Select a contact group'))
       ->setSetting('target_type', 'contact_group')
       ->setSetting('handler', 'default')
       ->setDisplayConfigurable('form', TRUE)
@@ -159,31 +189,37 @@ class Contact extends ContentEntityBase implements ContactInterface {
 
     $fields['name'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Name'))
-      ->setDescription(t('Enter contact name here.'))
+      ->setDescription(t('Enter contact name.'))
       ->setRevisionable(TRUE)
       ->setRequired(TRUE)
-      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayOptions('view', ['label' => 'inline','type' => 'string'])
+      ->setDisplayOptions('form', ['type' => 'string_textfield'])
       ->setPropertyConstraints('value', ['Length' => ['max' => 50]])
+      ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
 
     $fields['email'] = BaseFieldDefinition::create('email')
       ->setLabel(t('Email Id'))
-      ->setDescription(t('Enter email address here.'))
+      ->setDescription(t('Enter email address.'))
       ->setRevisionable(TRUE)
+      ->setDisplayOptions('view', ['label' => 'inline','type' => 'basic_string'])
+      ->setDisplayOptions('form', ['type' => 'email_default'])
       ->setPropertyConstraints('value', ['Length' => ['max' => 50]])
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
 
     $fields['address'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Address'))
-      ->setDescription(t('Enter address here.'))
+      ->setDescription(t('Enter address.'))
       ->setRevisionable(TRUE)
       ->setPropertyConstraints('value', ['Length' => ['max' => 200]])
+      ->setDisplayOptions('view', ['label' => 'inline','type' => 'string'])
+      ->setDisplayOptions('form', ['type' => 'string_textfield'])
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
 
     $fields['status'] = BaseFieldDefinition::create('boolean')
-      ->setLabel(t('Publishing status'))
+      ->setLabel(t('Status'))
       ->setDescription(t('A boolean indicating whether the Contact is published.'))
       ->setDefaultValue(TRUE);
 

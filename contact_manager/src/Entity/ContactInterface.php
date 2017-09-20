@@ -13,8 +13,6 @@ use Drupal\user\EntityOwnerInterface;
  */
 interface ContactInterface extends  ContentEntityInterface, EntityChangedInterface, EntityOwnerInterface {
 
-  // Add get/set methods for your configuration properties here.
-
   /**
    * Gets the Contact name.
    *
@@ -33,6 +31,44 @@ interface ContactInterface extends  ContentEntityInterface, EntityChangedInterfa
    *   The called Contact entity.
    */
   public function setName($name);
+
+  /**
+   * Gets the Contact email.
+   *
+   * @return string
+   *   Email of the Contact.
+   */
+  public function getEmail();
+
+  /**
+   * Sets the Contact email.
+   *
+   * @param string $email
+   *   The Contact email.
+   *
+   * @return \Drupal\contact_manager\Entity\ContactInterface
+   *   The called Contact entity.
+   */
+  public function setEmail($email);
+
+  /**
+   * Gets the Contact address.
+   *
+   * @return string
+   *   Address of the Contact.
+   */
+  public function getAddress();
+
+  /**
+   * Sets the Contact address.
+   *
+   * @param string $address
+   *   The Contact address.
+   *
+   * @return \Drupal\contact_manager\Entity\ContactInterface
+   *   The called Contact entity.
+   */
+  public function setAddress($address);
 
   /**
    * Gets the Contact creation timestamp.
