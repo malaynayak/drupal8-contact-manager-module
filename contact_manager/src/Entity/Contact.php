@@ -258,6 +258,15 @@ class Contact extends ContentEntityBase implements ContactInterface {
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
 
+    $fields['user_id'] = BaseFieldDefinition::create('entity_reference')
+      ->setLabel(t('Owner'))
+      ->setDescription(t('The owner Contact.'))
+      ->setDefaultValue(1)
+      ->setSetting('target_type', 'user')
+      ->setSetting('handler', 'default')
+      ->setDisplayConfigurable('form', FALSE)
+      ->setDisplayConfigurable('view', FALSE);
+
     $fields['name'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Name'))
       ->setDescription(t('Enter contact name.'))
@@ -268,7 +277,7 @@ class Contact extends ContentEntityBase implements ContactInterface {
       ->setPropertyConstraints('value', ['Length' => ['max' => 50]])
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
-      
+
     $fields['phone_number'] = BaseFieldDefinition::create('telephone')
       ->setLabel(t('Primary Phone Number'))
       ->setDescription(t('Enter primary phone number here.'))

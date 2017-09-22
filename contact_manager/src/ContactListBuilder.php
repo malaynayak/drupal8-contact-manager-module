@@ -14,7 +14,6 @@ use Drupal\Core\Url;
  */
 class ContactListBuilder extends EntityListBuilder {
 
-
   /**
    * {@inheritdoc}
    */
@@ -24,6 +23,7 @@ class ContactListBuilder extends EntityListBuilder {
     $header['group'] = $this->t('Group');
     $header['phone_number'] = $this->t('Phone Number');
     $header['email'] = $this->t('Email');
+    $header['owner'] = $this->t('Owner');
     return $header + parent::buildHeader();
   }
 
@@ -52,6 +52,11 @@ class ContactListBuilder extends EntityListBuilder {
     $row['email'] = Link::fromTextAndUrl(
       $entity->getEmail(),
       Url::fromUri('mailto:'.$entity->getPhoneNumber())
+    );
+    $row['owner'] = Link::createFromRoute(
+      $entity->getOwner()->getUsername(),
+      'entity.user.canonical',
+      ['user' => $entity->getOwner()->id()]
     );
     return $row + parent::buildRow($entity);
   }

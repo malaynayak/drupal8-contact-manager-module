@@ -1,2 +1,26 @@
 <?php
+use Drupal\Core\Field\BaseFieldDefinition;
 
+/**
+ * Implements hook_uninstall
+ */
+function contact_manager_uninstall(){
+	 Drupal::entityManager()->getStorage('image_style')->load('tiny')->delete();
+}
+
+/**
+ * Added user_id column to contact table.
+ */
+function contact_manager_update_8001(&$sandbox) {
+  $storage_definition = BaseFieldDefinition::create('entity_reference')
+    ->setLabel(t('Owner'))
+    ->setDescription(t('The owner Contact.'))
+    ->setDefaultValue(1)
+    ->setSetting('target_type', 'user')
+    ->setSetting('handler', 'default')
+    ->setDisplayConfigurable('form', FALSE)
+    ->setDisplayConfigurable('view', FALSE);
+
+  Drupal::entityDefinitionUpdateManager()
+    ->installFieldStorageDefinition('user_id', 'contact', 'contact_manager', $storage_definition);
+}
